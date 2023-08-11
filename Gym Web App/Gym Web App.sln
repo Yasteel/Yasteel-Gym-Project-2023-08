@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gym Web App", "Gym Web App.csproj", "{60974E28-0D0B-403A-829F-AB793F570E70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gym Web App", "Gym Web App.csproj", "{60974E28-0D0B-403A-829F-AB793F570E70}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "..\Models\Models.csproj", "{AAF9D4E4-7CE4-4B87-BEFF-E6C4A65CE489}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymApp.API", "..\GymApp.API\GymApp.API.csproj", "{FB611D8E-EDB8-4DBE-B5B5-5E3220F374B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{60974E28-0D0B-403A-829F-AB793F570E70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60974E28-0D0B-403A-829F-AB793F570E70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60974E28-0D0B-403A-829F-AB793F570E70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAF9D4E4-7CE4-4B87-BEFF-E6C4A65CE489}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAF9D4E4-7CE4-4B87-BEFF-E6C4A65CE489}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAF9D4E4-7CE4-4B87-BEFF-E6C4A65CE489}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAF9D4E4-7CE4-4B87-BEFF-E6C4A65CE489}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB611D8E-EDB8-4DBE-B5B5-5E3220F374B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB611D8E-EDB8-4DBE-B5B5-5E3220F374B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB611D8E-EDB8-4DBE-B5B5-5E3220F374B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB611D8E-EDB8-4DBE-B5B5-5E3220F374B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

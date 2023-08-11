@@ -81,3 +81,13 @@ Calculation of Salary is as Follows:
     - ```Commission = 0.05 * (MembershipPrice * MemberCount)```
     - ```Salary = Basic Salary + Commission```
 ___
+
+## Additional Changes - optional
+
+- Add a screen for members to book appointments with the trainers
+- this screen can show the trainers they are registered with
+- along with a calendar that will show when those trainers are free to be booked.
+
+**Should probably do this in a separate branch.**
+
+___
