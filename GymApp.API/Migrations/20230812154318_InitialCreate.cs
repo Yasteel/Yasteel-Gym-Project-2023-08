@@ -52,11 +52,11 @@ namespace GymApp.API.Migrations
                     Name = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     Gender = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    Age = table.Column<int>(type: "int", nullable: false),
-                    Height = table.Column<double>(type: "float", nullable: false),
+                    Age = table.Column<int>(type: "int", nullable: true),
+                    Height = table.Column<double>(type: "float", nullable: true),
                     ContactNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     JoinDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    fkMembershipType = table.Column<int>(type: "int", nullable: false)
+                    fkMembershipType = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {

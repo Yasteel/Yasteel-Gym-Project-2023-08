@@ -108,7 +108,7 @@ namespace GymApp.API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MemberId"));
 
-                    b.Property<int>("Age")
+                    b.Property<int?>("Age")
                         .HasColumnType("int");
 
                     b.Property<string>("ContactNumber")
@@ -119,7 +119,7 @@ namespace GymApp.API.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<double>("Height")
+                    b.Property<double?>("Height")
                         .HasColumnType("float");
 
                     b.Property<string>("IdNumber")
@@ -130,7 +130,7 @@ namespace GymApp.API.Migrations
                     b.Property<DateTime>("JoinDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("MembershipType")
+                    b.Property<int?>("MembershipType")
                         .HasColumnType("int")
                         .HasColumnName("fkMembershipType");
 
