@@ -1,7 +1,10 @@
+using FluentValidation;
 using GymApp.API;
 using GymApp.API.Interfaces;
 using GymApp.API.Services;
+using GymApp.API.Validators;
 using Microsoft.EntityFrameworkCore;
+using Models.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +23,8 @@ builder.Services.AddScoped<IMemberHrRecordService, MemberHrRecordService>();
 builder.Services.AddScoped<ITrainersService, TrainersService>();
 builder.Services.AddScoped<IMemberTrainerLinkService, MemberTrainerLinkService>();
 builder.Services.AddScoped<IResponseHelperService, ResponseHelperService>();
+
+//builder.Services.AddScoped<IValidator<MembersValidator, Members>>();
 
 var app = builder.Build();
 

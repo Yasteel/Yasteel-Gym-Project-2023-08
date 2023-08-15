@@ -22,7 +22,7 @@
         {
             var members = await this.membersService.GetAll();
 
-            return members == null ? 
+            return members == null ?
                 this.responseService.GetNotFoundResponse() : this.responseService.GetSuccessResponseWithPayload(members);
         }
 
@@ -34,6 +34,16 @@
             return member == null ?
                 this.responseService.GetNotFoundResponse() : this.responseService.GetSuccessResponseWithPayload(member);
         }
+
+        [HttpGet("/trainer/{trainerId}")]
+        public async Task<ActionResult> GetTrainers(int trainerId)
+        {
+            var members = await this.membersService.GetAll();
+
+            return members == null ?
+                this.responseService.GetNotFoundResponse() : this.responseService.GetSuccessResponseWithPayload(members);
+        }
+
 
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] Members newMember)
@@ -66,14 +76,14 @@
 
             // Map the model from Body to the memberwithId
 
-            memberToUpdate.IdNumber = member.IdNumber ?? memberToUpdate.IdNumber;
-            memberToUpdate.Name = member.Name ?? memberToUpdate.Name;
-            memberToUpdate.Surname = member.Surname ?? memberToUpdate.Surname;
-            memberToUpdate.Gender = member.Gender ?? memberToUpdate.Gender;
-            memberToUpdate.Age = member.Age == null ? memberToUpdate.Age : member.Age;
-            memberToUpdate.Height = member.Height == null ? memberToUpdate.Height : member.Height;
-            memberToUpdate.ContactNumber = member.ContactNumber ?? memberToUpdate.ContactNumber;
-            memberToUpdate.MembershipType = member.MembershipType ?? memberToUpdate.MembershipType;
+            memberToUpdate.IdNumber = member.IdNumber;
+            memberToUpdate.Name = member.Name;
+            memberToUpdate.Surname = member.Surname;
+            memberToUpdate.Gender = member.Gender;
+            memberToUpdate.Age = member.Age;
+            memberToUpdate.Height = member.Height;
+            memberToUpdate.ContactNumber = member.ContactNumber;
+            memberToUpdate.MembershipType = member.MembershipType;
 
             var result = await this.membersService.Update(memberToUpdate);
 
