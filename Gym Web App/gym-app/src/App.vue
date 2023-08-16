@@ -1,42 +1,21 @@
-<script setup>
-  import DxChart, {
-      DxArgumentAxis,
-      DxSeries,
-      DxLegend
-  } from 'devextreme-vue/chart';
-  
-  const data = [{
-      arg: 1990,
-      val: 5320816667
-  }, {
-      arg: 2000,
-      val: 6127700428
-  }, {
-      arg: 2010,
-      val: 6916183482
-  }];
+<script setup lang="ts">
+    import { reactive } from 'vue'
+    import NavBar from './components/NavBar.vue'
+    import Members from './components/Members.vue'
+
+
 </script>
 
 <template>
-    <DxChart
-        :data-source="data">
-        <DxArgumentAxis :tick-interval="10" />
-        <DxSeries type="bar" />
-        <DxLegend :visible="false" />
-    </DxChart>
+    <section class="nav">
+        <NavBar :currentTab="0"></NavBar>
+    </section>
+    <section class="body">
+        <Members></Members>
+    </section>
+    <section class="footer"></section>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+<style>
+
 </style>
