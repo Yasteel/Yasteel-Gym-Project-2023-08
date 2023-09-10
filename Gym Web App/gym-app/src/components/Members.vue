@@ -1,4 +1,4 @@
-<script setup >
+<script setup lang="ts">
     import { 
         ref, 
         onMounted,
@@ -8,40 +8,37 @@
     import {
         DxDataGrid,
         DxColumn,
-
+        DxPaging,
+        DxEditing,
+        DxForm
     } from 'devextreme-vue/data-grid'
 
 
-    // interface Members{
-    //     MemberId: number,
-    //     IdNumber: string,
-    //     Name: string,
-    //     Surname: string,
-    //     Gender: string,
-    //     Age: number,
-    //     Contact: string,
-    //     JoinDate: Date,
-    //     MembershipType: number,
-    // }
+    import notify from 'devextreme/ui/notify';
+    import axios from 'axios';
+
+    import WeighIn from './WeighIn.vue';
 
 
+    const datasource = ref(null);
+    const weighInPage: (any) = ref(null);
 
-    var datasource = ref(null);
-    var columns = ref([
-        { dataField: 'memberid', caption: 'Member Id' },
-        { dataField: 'name', caption: 'Name' },
-        { dataField: 'surname', caption: 'Surname' },
-        { dataField: 'age', caption: 'Age' },
-        { dataField: 'contact', caption: 'Contact#' },
-    ]);
-    
-    const editingOptions = reactive({
-      mode: 'form', // Enables row editing
-      allowAdding: true, // Enables adding new rows
-      allowUpdating: true, // Enables editing existing rows
-      allowDeleting: true, // Enables deleting rows
-      useIcons: true, // Use icons for edit actions
-    });
+    const openWeighIn = () => {
+        weighInPage.value.open();
+    }
+
+    const buttons = reactive({
+        customButtons: [
+            "edit",
+            "delete",
+            {
+                text: "Action 1",
+                icon: "fa-solid fa-scale-unbalanced",
+                onClick: openWeighIn,
+            }
+    ]
+    })
+
 
     
     onMounted(() => {
@@ -55,15 +52,25 @@
         })
         .then(response => datasource.value = response.data.payload)
         .catch(err => console.log(err));
-
-        // const response = fetch('https://localhost:7136/api/Members');
-        // const members = (await response).json();
-        
-        // console.log(await members.payload);
-
-        // datasource.value = await members.payload;
-
     };
+
+    
+
+    const onSaved = (values: any) => {
+        if(values.changes.length != 0){
+            var memberId = values.changes[0].data.memberId;
+            axios.patch(`https://localhost:7136/api/Members/${memberId}`, JSON.stringify(values.changes[0].data),{
+                'headers': {
+                    'Content-Type': "application/json"
+                }
+            })
+            .then((response) => {
+                console.log(response);
+                notify("Update Succcess", "success");
+            })
+            .catch(err => console.log(err));
+        }
+    }
 
 </script>
 
@@ -71,10 +78,102 @@
     <div class="datagridWrapper">
         <DxDataGrid
             :data-source="datasource"
-            :editing="editingOptions"
-            :columns="columns"
+            id="testDatagrid"
+            :hoverStateEnabled="true"
+            :showBorders="true"
+            :onSaved="onSaved"
         >
+            <DxPaging :page-size="10"/>
+            <DxEditing
+                :allow-adding="true"
+                :allow-updating="true"
+                :allow-deleting="true"
+                mode="form"
+            >
+                <DxForm
+                    id="form"
+                    label-mode="floating"
+                    label-location="left"
+                    read-only="false"
+                    col-count="3"
+                >
+                    
+                </DxForm>
+            </DxEditing>
+            <DxColumn 
+                data-field="memberId"
+                caption="Member Id"
+                :visible="false"
+                :disabled="true"
+                :width="500"
+            >
+
+            </DxColumn>
+            <DxColumn 
+                data-field="idNumber"
+                caption="ID Number"
+            >
+
+            </DxColumn>
+            <DxColumn 
+                data-field="name"
+                caption="Name"
+            >
+
+            </DxColumn>
+            <DxColumn 
+                data-field="surname"
+                caption="Surname"
+            >
+
+            </DxColumn>
+            <DxColumn 
+                data-field="gender"
+                caption="Gender"
+            >
+
+            </DxColumn>
+            <DxColumn 
+                data-field="age"
+                caption="Age"
+            >
+
+            </DxColumn>
+            <DxColumn 
+                data-field="height"
+                caption="Height"
+                :visible="false"
+            >
+
+            </DxColumn>
+            <DxColumn 
+                data-field="contactNumber"
+                caption="Contact#"
+            >
+
+            </DxColumn>
+            <DxColumn 
+                data-field="joinDate"
+                data-type="date"
+                caption="Join Date"
+            >
+
+            </DxColumn>
+            <DxColumn 
+                data-field="membershipType"
+                caption="Membership Type"
+            >
+            </DxColumn>
+            <DxColumn 
+                type="buttons" 
+                :buttons="buttons.customButtons" 
+                use-icons="true"
+            />
+
+
+
         </DxDataGrid>
+        <WeighIn ref="weighInPage"></WeighIn>
     </div>
 </template>
 
@@ -83,3 +182,5 @@
         padding: 2rem;
     }
 </style>
+
+  

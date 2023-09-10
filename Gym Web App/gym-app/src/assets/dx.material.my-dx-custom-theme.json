@@ -1,0 +1,26 @@
+{
+    "items": [
+        {
+            "key": "$base-border-radius",
+            "value": "4px"
+        },
+        {
+            "key": "$base-accent",
+            "value": "#0bea91"
+        },
+        {
+            "key": "$base-success",
+            "value": "#0bea91"
+        },
+        {
+            "key": "$base-bg",
+            "value": "#242424"
+        }
+    ],
+    "baseTheme": "material.teal.dark",
+    "outputColorScheme": "my-dx-custom-theme",
+    "makeSwatch": false,
+    "version": "23.1.4",
+    "widgets": [],
+    "removeExternalResources": false
+}

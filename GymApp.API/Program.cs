@@ -24,6 +24,14 @@ builder.Services.AddScoped<ITrainersService, TrainersService>();
 builder.Services.AddScoped<IMemberTrainerLinkService, MemberTrainerLinkService>();
 builder.Services.AddScoped<IResponseHelperService, ResponseHelperService>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod();
+    });
+});
+
 //builder.Services.AddScoped<IValidator<MembersValidator, Members>>();
 
 var app = builder.Build();
@@ -36,7 +44,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors();
 app.UseAuthorization();
 
 app.MapControllers();

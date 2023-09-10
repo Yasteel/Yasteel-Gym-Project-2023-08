@@ -1,5 +1,4 @@
 <script setup lang="ts">
-    import { reactive } from 'vue'
     import NavBar from './components/NavBar.vue'
     import Members from './components/Members.vue'
 
