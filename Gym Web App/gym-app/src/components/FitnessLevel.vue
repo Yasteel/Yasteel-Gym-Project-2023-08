@@ -17,7 +17,7 @@
     }
 
     const displayRules = reactive({
-        
+        showResults: true
     })
 
     const fitness = reactive({
@@ -27,6 +27,10 @@
     })
 
     const calculateFitnessLevels = () => {
+
+    }
+
+    const saveFitnessRecord = () => {
 
     }
 
@@ -41,7 +45,7 @@
         >
             <DxSimpleItem data-field="HRrest"></DxSimpleItem>
         </DxForm>
-        <div class="bmiInfo">
+        <div class="fitnessLevel">
             <DxButton
                 width="100%"
                 text="Calculate Fitness Levels"
@@ -50,9 +54,39 @@
                 @click="calculateFitnessLevels"
             />
         </div>
+        <div class="fitnessLevel" v-if="displayRules.showResults" >
+            <p> 
+                HRmax: <span>{{ fitness.HRmax }}</span>
+            </p>
+        </div>
+        <div class="fitnessLevel" v-if="displayRules.showResults" >
+            <p> 
+                VO2max: <span>{{ fitness.VO2max }}</span>
+            </p>
+        </div>
+        <div class="fitnessLevel" v-if="displayRules.showResults">
+            <DxButton
+                width="100%"
+                text="Save"
+                type="success"
+                styling-mode="contained"
+                @click="saveFitnessRecord"
+            />
+        </div>
     </div>
 </template>
 
 <style scoped>
+    .cardioHealthContainer {
+        margin-top: 2rem;
+    }
+    .fitnessLevel {
+        margin: 1rem 0;
+    }
 
+    .fitnessLevel p {
+        display: inline-block;
+        width: 100%;
+        font-size: 1rem;
+    }
 </style>

@@ -1,3 +1,4 @@
+using Azure.Storage.Blobs;
 using FluentValidation;
 using GymApp.API;
 using GymApp.API.Interfaces;
@@ -24,6 +25,10 @@ builder.Services.AddScoped<ITrainersService, TrainersService>();
 builder.Services.AddScoped<IMemberTrainerLinkService, MemberTrainerLinkService>();
 builder.Services.AddScoped<IResponseHelperService, ResponseHelperService>();
 
+builder.Services.AddSingleton(_ => new BlobServiceClient(builder.Configuration.GetValue<string>("AzureBlobStorageConnectionString")));
+builder.Services.AddSingleton<IBlobService, BlobService>();
+
+
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
@@ -33,6 +38,7 @@ builder.Services.AddCors(options =>
 });
 
 //builder.Services.AddScoped<IValidator<MembersValidator, Members>>();
+
 
 var app = builder.Build();
 

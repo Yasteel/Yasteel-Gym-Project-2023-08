@@ -1,8 +1,8 @@
 ﻿using System.Net;
 
-namespace Models.Models
+namespace Models.DTOs
 {
-    public  class ApiResponse
+    public class ApiResponse
     {
         public bool Success { get; set; }
 

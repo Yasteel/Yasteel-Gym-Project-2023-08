@@ -1,10 +1,13 @@
-﻿using GymApp.API.Interfaces;
-using Microsoft.AspNetCore.Mvc;
-using Models.Models;
-using System.Net;
-
+﻿
 namespace GymApp.API.Services
 {
+    using System.Net;
+    
+    using GymApp.API.Interfaces;
+    
+    using Microsoft.AspNetCore.Mvc;
+    using Models.DTOs;
+
     public class ResponseHelperService : ControllerBase, IResponseHelperService
     {
 
